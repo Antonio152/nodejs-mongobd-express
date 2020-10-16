@@ -34,7 +34,6 @@ app.use(express.json()); // now server can understand JSON files
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-    console.log(req.session);
     // HEADERS FOR HTTP REQUESTS IF NEEDED
     // voidSessionDestroyer();
     // res.header('Access-Control-Allow-Credentials', true);
