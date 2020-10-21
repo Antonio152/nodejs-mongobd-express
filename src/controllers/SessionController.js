@@ -37,6 +37,7 @@ SessionCtrl.login = async (req, res) => {
                     req.session.save();
                     res.json({
                         success: true,
+                        _id: searchedUser[0]._id,
                         username: searchedUser[0].username,
                         foto: searchedUser[0].foto,
                         curp: searchedUser[0].curp,
@@ -144,6 +145,7 @@ SessionCtrl.isLoggedIn = async (req, res) => {
             res.json({
                 success: true,
                 username: searchedUser[0].username,
+                _id: searchedUser[0]._id,
                 foto: searchedUser[0].foto,
                 curp: searchedUser[0].curp,
                 seguroSocial: [{
