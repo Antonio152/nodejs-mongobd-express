@@ -12,6 +12,7 @@ npm install
 npm run dev
 ...
 ```
+De esta forma, se instalarán las dependencias y se arranca Nodemon
 
 ## Contribución
 Clone el repositorio en su computador, edite y realice GIT push al proyecto.
