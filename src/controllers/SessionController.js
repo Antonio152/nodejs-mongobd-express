@@ -11,8 +11,8 @@ SessionCtrl.login = async (req, res) => {
         console.log(req.body); // Prints sent data from client
         let username = req.body.username;
         let password = req.body.password;
-        username = username.toLowerCase(); // Transforming user to low case
-
+        // username = username.toLowerCase(); // Transforming user to low case
+        
         // Validation for data lenght
         if (username.lenght > 12 || password.lenght > 32) {
             res.json({
@@ -38,8 +38,35 @@ SessionCtrl.login = async (req, res) => {
                     res.json({
                         success: true,
                         username: searchedUser[0].username,
-                        fullname: `${searchedUser[0].name} ${searchedUser[0].surname}`,
-                        role: searchedUser[0].role
+                        foto: searchedUser[0].foto,
+                        curp: searchedUser[0].curp,
+                        seguroSocial: [{
+                            numSos: searchedUser[0].numSos,
+                            gpoSanguineo: searchedUser[0].sanguineo
+                        }],
+                        direccion: [{
+                            numero: searchedUser[0].direccion[0].numero,
+                            calle: searchedUser[0].direccion[0].calle,
+                            localidad: searchedUser[0].direccion[0].localidad,
+                            ciudad: searchedUser[0].direccion[0].ciudad,
+                            estado: searchedUser[0].direccion[0].estado,
+                            cp: searchedUser[0].direccion[0].cp,
+                        }],
+                        nombreCompleto: `${searchedUser[0].nombre} ${searchedUser[0].aPaterno} ${searchedUser[0].aMaterno}`,
+                        nombre: `${searchedUser[0].nombre}`,
+                        apellidoPaterno: `${searchedUser[0].aPaterno}`,
+                        apellidoMaterno: `${searchedUser[0].aMaterno}`,
+                        role: searchedUser[0].rol[0].nombre,
+                        modulos: searchedUser[0].rol[0].modulos,
+                        datosAcademicos: [{
+                            carrera: searchedUser[0].academico[0].carrera,
+                            cuatrimestre: searchedUser[0].academico[0].cuatrimestre
+                        }],
+                        contacto: [{
+                            telefono: searchedUser[0].contacto[0].telefono,
+                            email: searchedUser[0].contacto[0].email,
+                            telEmergencia: searchedUser[0].contacto[0].telEmergencia
+                        }]
                     });
                     console.log(`El usuario ${req.session.userId} intentó iniciar sesión`);
                     return;
@@ -117,9 +144,35 @@ SessionCtrl.isLoggedIn = async (req, res) => {
             res.json({
                 success: true,
                 username: searchedUser[0].username,
-                fullname: `${searchedUser[0].name} ${searchedUser[0].surname}`,
-                role: searchedUser[0].role
-
+                foto: searchedUser[0].foto,
+                curp: searchedUser[0].curp,
+                seguroSocial: [{
+                    numSos: searchedUser[0].numSos,
+                    gpoSanguineo: searchedUser[0].sanguineo
+                }],
+                direccion: [{
+                    numero: searchedUser[0].direccion[0].numero,
+                    calle: searchedUser[0].direccion[0].calle,
+                    localidad: searchedUser[0].direccion[0].localidad,
+                    ciudad: searchedUser[0].direccion[0].ciudad,
+                    estado: searchedUser[0].direccion[0].estado,
+                    cp: searchedUser[0].direccion[0].cp,
+                }],
+                nombreCompleto: `${searchedUser[0].nombre} ${searchedUser[0].aPaterno} ${searchedUser[0].aMaterno}`,
+                nombre: `${searchedUser[0].nombre}`,
+                apellidoPaterno: `${searchedUser[0].aPaterno}`,
+                apellidoMaterno: `${searchedUser[0].aMaterno}`,
+                role: searchedUser[0].rol[0].nombre,
+                modulos: searchedUser[0].rol[0].modulos,
+                datosAcademicos: [{
+                    carrera: searchedUser[0].academico[0].carrera,
+                    cuatrimestre: searchedUser[0].academico[0].cuatrimestre
+                }],
+                contacto: [{
+                    telefono: searchedUser[0].contacto[0].telefono,
+                    email: searchedUser[0].contacto[0].email,
+                    telEmergencia: searchedUser[0].contacto[0].telEmergencia
+                }]
             });
             console.log(`El usuario ${req.session.userId} ingresó a través de una sesión ya existente`);
             return true;
