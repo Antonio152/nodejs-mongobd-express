@@ -56,7 +56,6 @@ userCtrl.createUser = async (req, res) => {
         numSos: req.body.numSos,
         sanguineo: req.body.sanguineo,
         contacto: req.body.contacto,
-        telEmergencia:req.body.contacto.telEmergencia,
         direccion: req.body.direccion,
         rol: req.body.rol,
         academico: req.body.academico,

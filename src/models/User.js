@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
     SchemaVersion: {
         type:String,
-        default:"2.1"
+        default:"2.2"
     },
     username: {
         type: String,
@@ -38,7 +38,10 @@ const userSchema = new Schema({
     }],
     rol: [{
         nombre: String,
-        modulos:[]
+        modulos:[{
+            nombre: '',
+            permisos: []
+        }]
     }],
     academico: [{
         matricula: String,
