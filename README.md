@@ -21,11 +21,11 @@ Clone el repositorio en su computador, edite y realice GIT push al proyecto.
 ```bash
 git clone https://github.com/Antonio152/nodejs-mongobd-express
 ...
-git checkout master \#cambia la rama a master
+git checkout master #cambia la rama a master
 Realiza los cambios en el proyecto
-git commit -m \"nombre del commit\"
-git pull \#si es que existen cambios en el repositorio
-git push origin master \#sube los cambios al repositorio
+git commit -m "nombre del commit"
+git pull #si es que existen cambios en el repositorio
+git push origin master #sube los cambios al repositorio
 ...
 ```
 
