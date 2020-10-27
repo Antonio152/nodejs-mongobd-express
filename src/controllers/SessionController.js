@@ -33,7 +33,7 @@ SessionCtrl.login = async (req, res) => {
                 // If decryption works
                 if (verified) {
                     //Token para la session actual
-                    const datosToken =  access.createToken(searchedUser)
+                    const datosToken =  access.createToken(searchedUser[0]._id)
                     // Save session
                     req.session.userId = searchedUser[0]._id;
                     req.session.save();
