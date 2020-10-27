@@ -1,6 +1,6 @@
 const jwt = require('jwt-simple')
 const moment= require('moment')
-const secret= '2a32**cB183<<bA1//2D3';
+const secret= '2a--{32**cB1>>**[83]<<bA}1//2D3';
 
 
 function isAuth (req,res,next) {
