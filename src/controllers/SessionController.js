@@ -1,7 +1,7 @@
 const SessionCtrl = {};
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-
+const access = require('../services/createToken')
 
 // POST HTTP REQUESTS
 // This method saves a cookie session into the client by res argument
@@ -32,11 +32,14 @@ SessionCtrl.login = async (req, res) => {
             bcrypt.compare(password, searchedUser[0].password, (bcryptErr, verified) => {
                 // If decryption works
                 if (verified) {
+                    //Token para la session actual
+                    const datosToken =  access.createToken(searchedUser)
                     // Save session
                     req.session.userId = searchedUser[0]._id;
                     req.session.save();
                     res.json({
                         success: true,
+                        token:datosToken,
                         _id: searchedUser[0]._id,
                         username: searchedUser[0].username,
                         foto: searchedUser[0].foto,
@@ -141,9 +144,12 @@ SessionCtrl.isLoggedIn = async (req, res) => {
 
         // If user exists
         if (Object.keys(searchedUser).length === 1) {
+            //Token para la session actual
+            const datosToken =  access.createToken(searchedUser)
             // Sending response
             res.json({
                 success: true,
+                token: datosToken,
                 username: searchedUser[0].username,
                 _id: searchedUser[0]._id,
                 foto: searchedUser[0].foto,
