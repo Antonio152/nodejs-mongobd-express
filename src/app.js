@@ -1,4 +1,5 @@
 const express = require('express');
+const exhbs = require('express-handlebars');
 const cors = require('cors');
 const app = express();
 const session = require('express-session');
@@ -22,10 +23,14 @@ app.use(session({
     }),
     cookie: { maxAge: 14 * 24 * 60 * 60 * 1000 },
 }));
+//This makes that images could be accessible by http://localhost:4000/<name_of_the_img>.<format>
+app.use(express.static('src/layouts/img'));
 
 // SETTINGS: server config
 // It's like a variable 'port': depoyAppPort || 4000
 app.set('port', process.env.PORT || 4000); 
+
+// Images or whatever the path and folders your images are in
 
 // MIDLEWARES: functions excecuted before it enters to the routes
 app.use(cors({origin:true,credentials: true})); // thus, you can send and retrieve data from server
@@ -53,6 +58,7 @@ app.get("/", (req, res) => {
 });
 app.use('/api/users', require('./routes/Users'));
 app.use('/session', require('./routes/Session'));
+app.use('/cards', require('./routes/Cards'));
 
 module.exports = app;
 
