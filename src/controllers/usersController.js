@@ -2,6 +2,7 @@ const userCtrl = {};
 
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const qrcode = require('qrcode')
 // GET
 userCtrl.findAll = async (req, res) => {
     const title = req.query.title;
@@ -44,11 +45,17 @@ userCtrl.createUser = async (req, res) => {
         res.status(400).json({ message: "El contenido no puede estar vacio!" });
         return;
     }
+    //datos
+        const dtqr= req.body.nombre+' '+req.body.aPaterno+' '+req.body.aMaterno;
+        const QR= await qrcode.toDataURL(dtqr)
+        console.log('Data: -> '+QR);
+        req.body.qr = QR;
     // Creamos la base de datos y comprobamos el estado.
     const usuario = new User({
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 9),
         foto: req.body.foto,
+        qr:req.body.qr,
         nombre: req.body.nombre,
         aPaterno: req.body.aPaterno,
         aMaterno: req.body.aMaterno,

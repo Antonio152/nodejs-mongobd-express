@@ -182,6 +182,29 @@
     .periodo{
         height: 57px;
     }
+    /*ELEMENTOS NUEVOS DE PERIODO*/
+    .periodoBack{
+        height: 57px;
+        position: absolute;
+        z-index: 0;
+    }
+    .periodoCont{
+        width: 110px;
+        position: relative;
+        margin-top: 12px;
+        margin-left: 9px;
+        
+    }
+    .periodoCont p{
+        margin-top: -2px;
+        margin-left: 1px;
+    }
+    .periodosNum{
+        position: absolute;
+        font-size: 10px;
+        margin-top: 2px;
+        margin-left: -0.5px;
+    }
     /* Línea vertical de la credencial */
     .linea-vertical{
         background: rgb(180, 180, 180);
@@ -295,7 +318,134 @@
                         
                         <div class="fila datos-cred justificado">
                             <div class="columns">
-                                <img class="periodo" src="http://localhost:4000/PERIODO.png" alt=""/>
+                                <img class="periodoBack" src="http://localhost:4000/PERIODOB.png" alt=""/>
+                                <p id="valorAnio" style="display: none">{{user.academico.[0].anio}}</p> 
+                                <script> 
+                                    var anioR= document.getElementById('valorAnio');
+                                    var anio = anioR.innerHTML;
+                                    var a1=parseInt(anio);
+                                    var a2=parseInt(anio)+1;
+                                    var a3=parseInt(anio)+2;
+                                    var a4=parseInt(anio)+3;
+                                    var a5=parseInt(anio)+4;
+                                    document.write("<p class='periodosNum'>"+a1+" "+a2 +" "+a3+" "+a4+" "+a5+"</p>") 
+                                </script>
+                                <p id="valorCuatri" style="display: none">{{user.academico.[0].cuatrimestre}}</p> 
+                                <p id="valorRegistro" style="display: none">{{user.academico.[0].mesRegistro}}</p>
+                                <div class="periodoCont">
+                                     <script>
+                                            var cuatrimestreR=document.getElementById('valorCuatri');
+                                            var cuatrimestreP = cuatrimestreR.innerHTML;
+                                            var cuatrimestre = parseInt(cuatrimestreP);
+                                            var ingresoR= document.getElementById('valorRegistro'); 
+                                            var ingreso = ingresoR.innerHTML;   
+                                            var proceso=0;
+                                            
+                                                if(ingreso =="Enero"){
+                                                    proceso=1;
+                                                }else{
+                                                    proceso=3;
+                                                }
+                                        
+                                            //Proceso 1 
+                                            if(proceso==1 && cuatrimestre == 1){
+                                                    document.write("<p><b>x</b></p>");
+                                            }
+
+                                            if(proceso==1 && cuatrimestre == 2){
+                                                    //cout<<"x,x";
+                                                document.write("<p><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+
+                                            if(proceso==1 && cuatrimestre == 3){
+                                                    //cout<<"x,x,x";
+                                                document.write("<p><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+                                                
+                                            if(proceso==1 && cuatrimestre==4 ){
+                                                    //cout<<"x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+                                                        
+                                            if(proceso==1 && cuatrimestre==5){
+                                                    //cout<<"x,x,x,x,x";
+                                                    document.write("<p><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b></p>");
+                                            }
+                                                        
+                                            if(proceso==1 && cuatrimestre==6){
+                                                    //cout<<"x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>");
+                                            }
+                                            
+                                            if(proceso==1 && cuatrimestre==7){
+                                                    //cout<<"x,x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>");
+                                            }
+                                            
+                                            if(proceso==1 && cuatrimestre==8 ){
+                                                    //cout<<"x,x,x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>");
+                                            }
+                                            if(proceso==1 && cuatrimestre==9){
+                                                    //cout<<"x,x,x,x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b>.<b> x </b></p>");
+                                            }             
+                                                
+                                            
+                                            //Proceso3
+
+                                            if(proceso==3 && cuatrimestre == 1){
+                                                    //cout<<" , ,x";
+                                                document.write("<p><b>.</b></p>"+"<p class='periodoCont p'><b>.</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+
+                                            if(proceso==3 && cuatrimestre == 2){
+                                                    //cout<<" , ,x,x";
+                                                document.write("<p>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.</p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                                
+                                            }
+
+                                            if(proceso==3 && cuatrimestre == 3){
+                                                    //cout<<" , ,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b></p>");
+                                            }
+
+                                            
+                                            if(cuatrimestre==4 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b></p>");
+                                            }
+
+                                            
+                                            if(cuatrimestre==5 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b></p>");
+                                            }
+
+                                            if(cuatrimestre==6 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b></p>");
+                                            }
+                                            
+
+                                            if(cuatrimestre==7 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x,x,x";
+                                                    document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b>.<b> x </b></p>");
+                                            }
+
+
+                                            if(cuatrimestre==8 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x,x,x,x";
+                                                    document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b>.<b> x </b></p>");
+                                            }
+
+
+                                            if(cuatrimestre==9 && proceso==3){
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b>.<b> x </b></p>");
+                                            }
+                                        
+                            </script>   
+                            </div>
                             </div>
                             <div class="fila">
                                 <div class="linea-vertical" style="background: #70AD47"/>
@@ -309,7 +459,7 @@
                                     </div>
                                 </div>
                                 <div class="columns">
-                                    <img class="periodo" src="http://localhost:4000/QR.png" alt=""/>
+                                    <img class="periodo" src="{{user.qr}}" alt=""/>
                                 </div>
                             </div>
                             

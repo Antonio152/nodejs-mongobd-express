@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
     SchemaVersion: {
         type:String,
-        default:"2.2"
+        default:"2.3"
     },
     username: {
         type: String,
@@ -13,6 +13,7 @@ const userSchema = new Schema({
     },
     password: String,
     foto: String,
+    qr:String,
     nombre: String,
     aPaterno: String,
     aMaterno: String,
@@ -50,7 +51,9 @@ const userSchema = new Schema({
             type: Number,
             min: 1,
             max: 10
-        }
+        },
+        mesRegistro:String,
+        anio:Number
     }],
     published: Boolean
     }, { 
