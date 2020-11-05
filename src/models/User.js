@@ -52,8 +52,8 @@ const userSchema = new Schema({
             min: 1,
             max: 10
         },
-        mesRegistro:String,
-        anio:Number
+        registro:Date,
+        estatus:Boolean
     }],
     published: Boolean
     }, { 

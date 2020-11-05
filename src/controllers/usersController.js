@@ -45,11 +45,16 @@ userCtrl.createUser = async (req, res) => {
         res.status(400).json({ message: "El contenido no puede estar vacio!" });
         return;
     }
-    //datos
-        const dtqr= req.body.nombre+' '+req.body.aPaterno+' '+req.body.aMaterno;
+    //datos QR
+    var statusA='';
+    if(req.body.academico[0].estatus==true){
+           statusA='Activo';
+    }else{
+           statusA='Inactivo';
+    }
+        const dtqr= req.body.nombre+' '+req.body.aPaterno+' '+req.body.aMaterno+' - '+req.body.academico[0].matricula+' - '+statusA;
         const QR= await qrcode.toDataURL(dtqr)
-        console.log('Data: -> '+QR);
-        req.body.qr = QR;
+        req.body.qr = QR;   
     // Creamos la base de datos y comprobamos el estado.
     const usuario = new User({
         username: req.body.username,

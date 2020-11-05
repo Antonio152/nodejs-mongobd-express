@@ -319,29 +319,35 @@
                         <div class="fila datos-cred justificado">
                             <div class="columns">
                                 <img class="periodoBack" src="http://localhost:4000/PERIODOB.png" alt=""/>
-                                <p id="valorAnio" style="display: none">{{user.academico.[0].anio}}</p> 
+                                <p id="valorAnio" style="display: none">{{user.academico.[0].registro}}</p> 
                                 <script> 
                                     var anioR= document.getElementById('valorAnio');
                                     var anio = anioR.innerHTML;
-                                    var a1=parseInt(anio);
-                                    var a2=parseInt(anio)+1;
-                                    var a3=parseInt(anio)+2;
-                                    var a4=parseInt(anio)+3;
-                                    var a5=parseInt(anio)+4;
+                                    anio=anio.replace(/\D/g, ' ');//Removemos los digitos
+                                    var componentes = anio.split(' ');//pasamos los datos al arreglo
+                                    var fechaNum = parseInt(componentes[0]);
+                                    var a1=parseInt(fechaNum);
+                                    var a2=parseInt(fechaNum)+1;
+                                    var a3=parseInt(fechaNum)+2;
+                                    var a4=parseInt(fechaNum)+3;
+                                    var a5=parseInt(fechaNum)+4;
                                     document.write("<p class='periodosNum'>"+a1+" "+a2 +" "+a3+" "+a4+" "+a5+"</p>") 
                                 </script>
                                 <p id="valorCuatri" style="display: none">{{user.academico.[0].cuatrimestre}}</p> 
-                                <p id="valorRegistro" style="display: none">{{user.academico.[0].mesRegistro}}</p>
+                                <p id="valorRegistro" style="display: none">{{user.academico.[0].registro}}</p>
                                 <div class="periodoCont">
                                      <script>
                                             var cuatrimestreR=document.getElementById('valorCuatri');
                                             var cuatrimestreP = cuatrimestreR.innerHTML;
                                             var cuatrimestre = parseInt(cuatrimestreP);
                                             var ingresoR= document.getElementById('valorRegistro'); 
-                                            var ingreso = ingresoR.innerHTML;   
+                                            var ingreso = ingresoR.innerHTML;
+                                            ingreso=ingreso.replace(/\D/g, ' ');//Removemos los digitos 
+                                            var mesI = ingreso.split(' ');//pasamos los datos al arreglo 
+                                            var mes = parseInt(mesI[1]); 
                                             var proceso=0;
                                             
-                                                if(ingreso =="Enero"){
+                                                if(mes == 01 || mes == 1){
                                                     proceso=1;
                                                 }else{
                                                     proceso=3;
