@@ -1,0 +1,375 @@
+{{!-- Estilos de la credencial 2--}}
+<style>
+    p {
+        margin: 0
+    }
+
+    .columns {
+        display: flex;
+        flex-direction: column;
+        /* width: 100%; */
+    }
+
+    .fila {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* Un lado de la credencial */
+    .cred-lado {
+        width: 455px;
+        height: 292px;
+        border: 2px solid #dbdbdb;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    /* lado derecho de la credencial */
+    .lado-der {
+        margin-left: 15px;
+    }
+
+    /* fondo de la credencial */
+    .fondo {
+        width: 100%;
+        border-radius: 10px;
+        position: absolute;
+        z-index: 0;
+    }
+
+    /* Escudo de la institución */
+    .escudo {
+        width: 74px;
+    }
+
+    .foto-cred {
+        width: 100px;
+        height: 130px;
+        bottom: 20%;
+        right: 6%;
+    }
+
+    /* datos del alumno */
+    .datos-cred {
+        position: relative;
+        padding: 10px;
+    }
+
+    /* escudo y foto */
+    .cred-images {
+        width: 70px;
+        padding: 0 5px 5px 5px;
+        margin-right: 5px;
+    }
+
+    /* nombre de la institución */
+    p.nombre-inst {
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 5px 0px;
+    }
+
+    /* Contenedor de datos */
+    .datos-inst {
+        padding: 0px 16px;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+    }
+
+    .foto-usuario {
+        padding: 0px 16px;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    /* Lema de la institución */
+    .lema {
+        text-align: center;
+        padding: 5px 0px;
+        font-style: italic;
+    }
+
+    /* letras mayúsculas */
+    .mayus {
+        text-transform: uppercase;
+        /* letter-spacing: 1px; */
+    }
+
+    .extra {
+        text-transform: uppercase;
+        color: rgb(180, 180, 180);
+        font-size: 8px;
+    }
+
+    /* Descripción del alumno */
+    .desc {
+        font-size: 12px;
+        padding-right: 10px;
+        padding-bottom: 2px;
+    }
+
+    /* Nombre completo */
+    .nom-compl {
+        padding-bottom: 5px;
+    }
+
+    /* Dirección del alumno */
+    .direc-alu {
+        margin-top: 5px;
+    }
+
+    .carrera {
+        width: 98%;
+        padding: 5px;
+        font-size: 13px;
+        text-align: center;
+        z-index: 10;
+    }
+
+    /* Datos de la dirección de la institución */
+    .direccion-academica {
+        width: 100%;
+        max-height: 60px;
+        padding-top: 10px;
+        margin-top: 10px;
+        font-size: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Contenedor de la firma */
+    .firma-director {
+        position: relative;
+        max-width: 214px;
+    }
+
+    /* Para centrar la firma */
+    .absoluto-centrado {
+        position: absolute;
+        left: 50%;
+    }
+
+    .relativo-centrado {
+        position: relative;
+        left: -50%;
+    }
+
+    /* Estilo de la firma */
+    .img-firma-director {
+        height: 40px;
+        text-align: center;
+        /* left: 50%; */
+        /* width: 100%; */
+    }
+
+    /*Dirección del alumno*/
+    .direc-alu {
+        margin-top: 5px;
+    }
+
+    /* Contenedor de datos del director */
+    .director {
+        position: relative;
+        margin-top: 30px;
+        width: 150px;
+        text-align: center;
+    }
+
+    .nombre {
+        font-size: 10px;
+    }
+
+    .letra-pequeña {
+        font-size: 7px;
+    }
+
+    .texto-centrado {
+        text-align: center;
+    }
+
+    /* Imagen de la institución a la que la escuela pertenece */
+    .inst-superior {
+        width: 10%;
+        height: 10%;
+    }
+
+    /* Donde firma el alumno */
+    .cuadro-firma {
+        background-color: rgb(240, 240, 240);
+        margin: 5px 30px;
+        width: 100%;
+        height: 50px;
+    }
+
+    /* Periodo académico */
+    .periodo {
+        width: 70px;
+        height: 57px;
+    }
+
+    /* Línea vertical de la credencial */
+    .linea-vertical {
+        background: rgb(180, 180, 180);
+        height: 100%;
+        width: 2px;
+        margin: 0px 5px;
+    }
+
+    .credencial {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+<html>
+
+<body>
+    {{!-- Para cada uno de los usuarios del req --}}
+    {{#each usuarios as |user|}}
+    <div class="columns">
+
+        <div class="credencial">
+            <div class="fila justificado">
+                <div class="fila cred-lado">
+                    <img src="http://localhost:4000/FONDO FRENTE.png" class="fondo" alt="" />
+                    <div class="columns">
+                        <div class="fila datos-cred">
+                            <div class="cred-images">
+                                <img src="http://localhost:4000/LOGO.PNG" class="escudo" alt="" />
+                            </div>
+                            <div class="datos-inst" style="color:#461E68">
+                                {{!-- Datos de la universidad --}}
+                                {{!-- Preferentemente obtener de la base de datos --}}
+                                <p class="nombre-inst"><b>Universidad Politécnica de Pachuca</b></p>
+                                <hr style="border-color:#461E68" />
+                                <p class="lema">Una universidad para la Investigación</p>
+                            </div>
+
+                        </div>
+                        <div class="fila datos-cred">
+                            <div class="datos-inst">
+                                {{!-- Datos del alumno --}}
+                                <div class="nom-compl">
+                                    <p class="mayus"><b>{{user.aPaterno}} {{user.aMaterno}}</b></p>
+                                    <p class="mayus"><b>{{user.nombre}}</b></p>
+                                </div>
+                                <p class="mayus desc"><b>MATRÍCULA: {{user.academico.[0].matricula}}</b></p>
+                                <p class="mayus desc"><b>CURP: {{user.curp}}</b></p>
+                                <p class="extra"><b>SOS: {{user.contacto.[0].telEmergencia}}</b></p>
+                                <p class="extra"><b>RH: {{user.sanguineo}}</b></p>
+                                <p class="extra"><b>Direccion:
+                                        {{user.direccion.[0].calle}} {{user.direccion.[0].numero}},
+                                        {{user.direccion.[0].localidad}} C.P. {{user.direccion.[0].cp}},
+                                        {{user.direccion.[0].ciudad}}, {{user.direccion.[0].estado}}.</b></p>
+                            </div>
+                            <div class="foto-usuario">
+                                {{!-- Foto del alumno --}}
+                                <div class="cred-images">
+                                    <img src="data:image;base64,{{user.foto}}" class="foto-cred" alt="" />
+                                </div>
+                            </div>
+
+                        </div>
+                        {{!-- Carrera --}}
+                        <div class="carrera"
+                            style="background:#461E68; color: white; border-radius: 0 0 10px 10px; margin-right:3px">
+                            <p align="center"><b>{{user.academico.[0].carrera}}</b></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" fila cred-lado lado-der">
+                    <div class="fondo ">
+                        <img src="http://localhost:4000/FONDO ATRAS.png" class="fondo" alt="" />
+                        <div class="column datos-cred justificado">
+                            <div class="fila direccion-academica">
+                                <div class="absoluto-centrado">
+                                    <div class="relativo-centrado">
+                                        <img style="height: 40px;width=70px;" src="http://localhost:4000/UTyP.png"
+                                            alt="" />
+                                        <img style="height: 40px;width=40px;" src="http://localhost:4000/Gobierno.png"
+                                            alt="" />
+                                        <img style="height: 40px;width=40px;" src="http://localhost:4000/Hidalgo.png"
+                                            alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns datos-cred">
+                            <div class="fila datos-cred">
+                                <div class="cuadro-firma" />
+                            </div>
+                        </div>
+                        <div class="columns letra-pequeña" style="padding: 10px 0px;">
+                            <div  style="justify-content: center;align-items: center; margin:5px; text-align: center;">
+                                <p>Este documento es intransferible, el titular es responsable de las acciones
+                                    derivadas de su uso.</p>
+                                <p>Es indispensable su presentación para efectos de trámites académicos y
+                                    administrativos</p>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="linea-vertical" style="background: #461E68" />
+                        </div>
+                        <div class="fila datos-cred">
+                            <img style="width: 100px; height:auto;" src="http://localhost:4000/PERIODO.png" alt="" />
+                            {{!-- <div class="director">
+                                <div class="firma-director">
+                                    <div class="absoluto-centrado">
+                                        <div class="relativo-centrado">
+                                            <img style="width: 70px;" src="http://localhost:4000/FIRMA.png" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="nombre">Dr. Marco Antonio Flores Gonzáles</p>
+                                <p class="nombre">Rector</p>
+                            </div> --}}
+                            <div class="columns" style="justify-content: center;align-items: center; margin:5px; text-align: center;">
+                                <img style="width: 65px;" src="http://localhost:4000/FIRMA.png" alt="" />
+                                <p class="nombre">Dr. Marco Antonio Flores Gonzáles</p>
+                                <p class="nombre">Rector</p>
+                            </div>
+                            <div class="columns">
+                                <div class="letra-pequeña" style="text-align: right;">
+                                    <div>
+                                        <b>Universidad Politécnica de Pachuca</b></br>Carr. Pachuca-Ciudad
+                                        Sahagún
+                                        km 20.</br>Ex Hacienda de Sta.Bárbara, Zempoala, Hidalgo.</br>C.P. 43830
+                                        Tel
+                                        01(771)547 7510 ext. 2213
+                                    </div>
+                                </div>
+                            </div>
+                            <img style="width: 57px; height: 57px;" src="http://localhost:4000/QR.png" alt="" />
+                        </div>
+                        {{!-- <div class="fila">
+                            <div class="columns">
+                                <div class="letra-pequeña">
+                                    <div>
+                                        <b>Universidad Politécnica de Pachuca</b></br>Carr. Pachuca-Ciudad
+                                        Sahagún
+                                        km 20.</br>Ex Hacienda de Sta.Bárbara, Zempoala, Hidalgo.</br>C.P. 43830
+                                        Tel
+                                        01(771)547 7510 ext. 2213
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <img style="height: 57px;" src="http://localhost:4000/QR.png" alt="" />
+                            </div>
+                        </div> --}}
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <br /><br />
+            {{/each}}
+</body>
+
+</html>
