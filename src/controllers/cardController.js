@@ -50,7 +50,7 @@ cardController.getCard = async (req, res) => {
 
     } catch (error) {
         res.json({
-            msg: error
+            msg: error.toString()
         })
     }
 }
