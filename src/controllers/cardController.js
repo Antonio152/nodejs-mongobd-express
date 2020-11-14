@@ -26,7 +26,10 @@ cardController.getCard = async (req, res) => {
 
     try {
         // Initialize puppeteer and the page
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            headless:true,
+            args: ["--no-sandbox"]
+        });
         const page = await browser.newPage();
         // NAME OF THE HANDLEBAR FILE AND IT'S DATA
         const content = await compile(data.formato, data);
