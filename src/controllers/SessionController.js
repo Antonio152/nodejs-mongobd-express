@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const access = require('../services/createToken')
 const nodemailer = require("nodemailer");
+const hbs = require("nodemailer-express-handlebars");
+const path = require('path');
 
 const makeLogin = (req,res,searchedUser) => {
     const datosToken =  access.createToken(searchedUser._id)
@@ -273,25 +275,46 @@ SessionCtrl.sendEmail = async (req, res) => {
                 pass: 'ZXB#@zSR*rrY', // generated ethereal password
             },
         });
+
+        const options = {
+            viewEngine: {
+              partialsDir: path.join(process.cwd(), 'src', 'layouts', 'partials'),
+              layoutsDir: path.join(process.cwd(), 'src', 'layouts', 'emails', 'view'),
+              extname: ".hbs"
+            },
+            extName: ".hbs",
+            viewPath: path.join(process.cwd(), 'src', 'layouts', 'emails')
+        };
         
+        transporter.use('compile', hbs(options));
+
+        const datosHbs = {
+            nombre: user.nombre,
+            codigo: code
+        };
+
         const msg = {
             from: '"Mandatum Support Service" mandatum.service@gmail.com', // sender address
             to: `${email}`, // list of receivers
             subject: "Solicitud de cambio de contraseña", // Subject line
-            text: `Hola, qué tal!!\n\n
-            Se le informa que el código para reestablecer su contraseña es el siguiente ${code}`, // plain text body
+            template: 'PswRestore',
+            context: datosHbs,
+            // text: `Hola, qué tal!!\n\n
+            // Se le informa que el código para reestablecer su contraseña es el siguiente ${code}`, // plain text body
             envelope: {
                 from: 'mandatum.service@gmail.com, Mandatum Support Service <mandatum.service@gmail.com>', // used as MAIL FROM: address for SMTP
                 to: `${email}` // used as RCPT TO: address for SMTP
             }
         }
     
+
         // send mail with defined transport object
         await transporter.sendMail(msg, (error, info) => {
             if (error){
                 res.json({
                     success: false,
-                    msg:'Ha ocurrido un problema'
+                    msg:'Ha ocurrido un problema',
+                    error: error
                 });
             }
             else{
