@@ -16,7 +16,7 @@ router.route('/email')
     .put(sendEmail);
     
 router.route('/codeVerification')
-    .get(codeVerification);
+    .post(codeVerification);
 
 router.route('/lock')
     .put(doLockUser);

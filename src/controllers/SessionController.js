@@ -52,13 +52,20 @@ const makeLogin = (req,res,searchedUser) => {
 SessionCtrl.codeVerification = async (req,res) => {
     try {
         console.log(req.body);
-        const searchedUser = await User.find({'contacto.0.email': req.body.email});
-            
-        if (req.body.codigo === searchedUser[0].reestablecimiento){
+        const searchedUser = await User.findOne({'contacto.0.email': req.body.email});
+
+        if (req.body.codigo === undefined || req.body.email === undefined){
+            res.json({
+                success: false,
+                msg: 'Sin datos'
+            });
+            return;
+        }
+        if (req.body.codigo === searchedUser.reestablecimiento){
             res.json({
                 success: true,
                 msg: 'Código aceptado',
-                id: searchedUser[0]._id
+                id: searchedUser._id
             })
         }
         else {
@@ -118,7 +125,8 @@ SessionCtrl.login = async (req, res) => {
                 else {
                     res.json({
                         success: false,
-                        msg: 'Contraseña inválida'
+                        msg: 'Contraseña inválida',
+                        id: searchedUser[0]._id
                     })
                 }
             });
