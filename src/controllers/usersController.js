@@ -95,7 +95,6 @@ userCtrl.update = async (req, res) => {
     }
   
     const id = req.params.id;
-    console.log(req.body);
     await User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
