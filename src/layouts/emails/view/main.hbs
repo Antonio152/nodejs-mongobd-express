@@ -1,8 +1,4 @@
-<style>
-    .container {
-        max-width: 25rem;
-    }
-</style>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,30 +7,67 @@
     {{!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> --}}
     <title>Código de reestablecimiento</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .container{
+            width:100%;
+            padding-right:15px;
+            padding-left:15px;
+            margin-right:auto;
+            margin-left:auto}
+        @media (min-width:576px){
+            .container{max-width:540px}
+        }
+        @media (min-width:768px){
+            .container{max-width:720px}
+        }
+        @media (min-width:992px){
+            .container{max-width:960px}
+        }
+        @media (min-width:1200px){
+            .container{max-width:1140px}
+        }
+        .justify-content-md-center{-ms-flex-pack:center!important;justify-content:center!important}
+        .card{
+            position:relative;
+            width: 100%;
+            max-width: 398px;
+            border: 1px solid #c7c7c7;
+            border-radius: 5px;
+        }
+        
+        .card-body{-ms-flex:1 1 auto;flex:1 1 auto;padding:1.25rem}
+        .card-title{margin-bottom:.75rem}.card-subtitle{margin-top:-.375rem;margin-bottom:0}
+        .card-text:last-child{margin-bottom:0}
+        .card-header{border-radius: 5px 5px 0px 0px;padding:.75rem 1.25rem;margin-bottom:0;background-color:rgba(0,0,0,.03);border-bottom:1px solid rgba(0,0,0,.125)}.card-header:first-child{border-radius:calc(.25rem - 1px) calc(.25rem - 1px) 0 0}.card-header+.list-group .list-group-item:first-child{border-top:0}
+        .card-footer{padding:.75rem 1.25rem;background-color:rgba(0,0,0,.03);border-top:1px solid rgba(0,0,0,.125)}.card-footer:last-child{border-radius:0 0 calc(.25rem - 1px) calc(.25rem - 1px)}
+        .card-header:first-child{border-radius:0}.accordion>
+        .card:not(:first-of-type):not(:last-of-type){border-bottom:0;border-radius:0}.accordion>
+        .card:first-of-type{border-bottom:0;border-bottom-right-radius:0;border-bottom-left-radius:0}.accordion>
+        .card:last-of-type{border-top-left-radius:0;border-top-right-radius:0}.accordion>.card .card-header{margin-bottom:-1px}
+        .bg-light{background-color:#f8f9fa!important}a.bg-light:focus,a.bg-light:hover,button.bg-light:focus,button.bg-light:hover{background-color:#dae0e5!important}
+        .mb-3,.my-3{margin-bottom:1rem!important}
+        .text-center{text-align:center!important}
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="card bg-light mb-3"  style="max-width: 25rem;">
-                <div class="card-header text-white">
-                    <div class="text-center">
-                        <h2 class="card-title">MANDATUM</h2>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Hola {{nombre}}</h5>
-                    <p class="card-text">Se acaba de solicitar un código para reestablecer su contraseña, el cual es el siguiente</p>
-                    <div class="text-center">
-                        <h5 class="card-title">{{codigo}}</h5>
-                    </div>
-                    <p class="card-text">Después, deberá restablecer su contraseña. En caso de haber sido bloqueado, esto desbloqueará su cuenta también.</p>
-                    <p class="card-text">Sin más por el momento, se le envía un cordial saludo.</p>
-                </div>
-                <div class="card-footer">
-                    <div class="text-center">
-                        <p class="card-text">Mandatum &copy; Support Service  2020</p>
-                    </div>
-                </div>
+    <div class="card">
+        <div class="card-header text-white" style="background-color: #051E34;">
+            <div class="text-center" style="color: white;">
+                <h2 class="card-title">MANDATUM</h2>
+            </div>
+        </div>
+        <div class="card-body">
+            <h3 class="card-title">Hola, {{nombre}}.</h5>
+            <p class="card-text">Se acaba de solicitar un código para reestablecer su contraseña, el cual es el siguiente:</p>
+            <div class="text-center">
+                <h3 class="card-title">{{codigo}}</h5>
+            </div>
+            <p class="card-text">Después, deberá restablecer su contraseña. En caso de haber sido bloqueado, esto desbloqueará su cuenta también.</p>
+            <p class="card-text">Sin más por el momento, se le envía un cordial saludo.</p>
+        </div>
+        <div class="card-footer">
+            <div class="text-center">
+                <p class="card-text">Mandatum &copy; Support Service  2020</p>
             </div>
         </div>
     </div>
