@@ -95,14 +95,13 @@ userCtrl.update = async (req, res) => {
     }
   
     const id = req.params.id;
-  
     await User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
             res.status(404).json({
                 message: `No se puede actualizar el dato con el id=${id}. Probablemente el dato no fue encontrado!`
             });
-            } else res.json({ message: "Datos actualizados satisfactoriamente." });
+            } else res.json({ message: "Datos actualizados satisfactoriamente.", data: data });
         })
         .catch(err => {
             res.status(500).json({

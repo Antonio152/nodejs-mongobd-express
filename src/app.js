@@ -39,9 +39,10 @@ app.set('port', process.env.PORT || 4000);
 
 // MIDLEWARES: functions excecuted before it enters to the routes
 app.use(cors({origin:true,credentials: true})); // thus, you can send and retrieve data from server
-app.use(express.json()); // now server can understand JSON files
+app.use(express.json({limit: '256mb'})); // now server can understand JSON files
+
 // analizar solicitudes de tipo de contenido - application / x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({limit: '256mb', extended: true }));
 
 app.use((req, res, next) => {
     // HEADERS FOR HTTP REQUESTS IF NEEDED
