@@ -26,11 +26,6 @@ app.use(session({
 }));
 //This makes that images could be accessible by http://localhost:4000/<name_of_the_img>.<format>
 app.use(express.static('src/layouts/img'));
-app.use(express.static('public'));
-/*const iDir = path.parse(__dirname);
-const nDir = iDir.dir+'src\\layouts\\img'
-app.use(express.static(nDir));
-console.log(app.use(express.static(nDir)));*/
 // SETTINGS: server config
 // It's like a variable 'port': depoyAppPort || 4000
 app.set('port', process.env.PORT || 4000); 

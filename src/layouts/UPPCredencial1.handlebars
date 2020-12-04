@@ -15,7 +15,7 @@
     /* Un lado de la credencial */
     .cred-lado{
         width: 455px;
-        height: 292px;
+        height: 200px;
         border: 2px solid #dbdbdb;
         border-radius: 10px;
         position: relative;
@@ -28,28 +28,30 @@
     /* fondo de la credencial */
     .fondo{
         width: 100%;
+        height: 100%;
         border-radius: 10px;
         position: absolute;
         z-index: 0;
     }
     /* Escudo de la institución */
     .escudo{
-        width: 74px;
+        width: 64px;
     }
 
     .foto-cred{
-        width: 74px;
-        height: 96px;
+        width: 64px;
+        height: 86px;
     }
 
     /* datos del alumno */
     .datos-cred{
         position: relative;
-        padding: 10px;
+        padding: 5px;
     }
     /* escudo y foto */
     .cred-images{
-        width: 74px;
+        width: 54px;
+        height: 60px;
     }
     /* nombre de la institución */
     p.nombre-inst{
@@ -57,16 +59,17 @@
         font-weight: 500;
         text-transform:uppercase;
         text-align: center;
-        padding: 5px 0px;
+        padding: 3px 0px;
     }
 
     /* Contenedor de datos */
-    .datos-inst{padding: 0px 16px;}
+    .datos-inst{padding: 0px 10px;}
 
     /* Lema de la institución */
     .lema{
+        font-size: 12px;
         text-align: center;
-        padding: 5px 0px;
+        padding: 0px 0px;
     }
 
     /* letras mayúsculas */
@@ -77,28 +80,28 @@
 
     /* Descripción del alumno */
     .desc{
-        font-size: 12px;
-        padding-right: 10px;
+        font-size: 10px;
+        padding-right: 7px;
         padding-bottom: 2px;
     }
 
     /* Nombre completo */
     .nom-compl{
-        padding-bottom: 5px;
+        padding-bottom: 3px;
     }
 
     /* Dirección del alumno */
     .direc-alu{
-        margin-top: 5px;
+        margin-top: 3px;
     }
 
     .rotado180{
         background-color: rgb(83, 83, 83);
         position: relative;
         transform:rotateZ(180deg);
-        height: 260.5px;
-        width: 35px;
-        padding:15px 10px;
+        height: 100%;
+        width: 15px;
+        padding:10px 10px;
         -webkit-border-top-left-radius: 10px;
         -webkit-border-bottom-left-radius: 10px;
         -moz-border-radius-topleft: 10px;
@@ -108,7 +111,7 @@
     }
 
     .carrera{
-        font-size: 13px;
+        font-size: 12px;
         writing-mode: vertical-rl;
         text-orientation: sideways-right;
     }
@@ -119,13 +122,13 @@
         padding-top: 10px;
         padding-left: 5px;
         max-width: 50%;
-        font-size: 10px;
+        font-size: 8px;
     }
 
     /* Contenedor de la firma */
     .firma-director{
         position: relative;
-        max-width: 214px;
+        max-width: 190px;
     }
     /* Para centrar la firma */
     .absoluto-centrado{
@@ -140,7 +143,7 @@
 
     /* Estilo de la firma */
     .img-firma-director{
-        height: 40px;
+        height: 25px;
         text-align: center;
         /* left: 50%; */
         /* width: 100%; */
@@ -150,12 +153,12 @@
     .director{
         position: relative;
         margin-top: 30px;
-        width: 214px;
+        width: 200px;
         text-align: center;
     }
 
     .letra-pequeña {
-        font-size: 10px;
+        font-size: 8px;
     }
     .texto-centrado{
         text-align: center;
@@ -169,39 +172,41 @@
 
     .img-inst-superior{
         width: 150px;
+        height: 30px;
     }
     /* Donde firma el alumno */
     .cuadro-firma{
         background-color: rgb(240, 240, 240);
-        margin: 5px 30px;
+        margin: 0px 20px;
         width: 100%;
-        height: 50px;
+        height: 40px;
     }
 
     /* Periodo académico */
     .periodo{
-        height: 57px;
+        height: 50px;
     }
     /*ELEMENTOS NUEVOS DE PERIODO*/
     .periodoBack{
-        height: 57px;
+        height: 55px;
         position: absolute;
         z-index: 0;
     }
     .periodoCont{
         width: 110px;
         position: relative;
-        margin-top: 12px;
+        margin-top: 11.5px;
         margin-left: 9px;
         
     }
     .periodoCont p{
         margin-top: -2px;
         margin-left: 1px;
+        font-size: 14.5px;
     }
     .periodosNum{
         position: absolute;
-        font-size: 10px;
+        font-size: 9.5px;
         margin-top: 2px;
         margin-left: -0.5px;
     }
@@ -222,31 +227,30 @@
         {{!-- Para cada uno de los usuarios del req --}}
         {{#each usuarios as |user|}}
         <div class="columns">
-
         <div class="credencial">
             <div class="fila justificado">
                 <div class="fila cred-lado">
                     <div class="fila">
                         <div class="columns">
-                            <img src="http://localhost:4000/FONDO FRENTE.png" class="fondo" alt="" />
+                            <img src="{{user.contenido.[0].imagenFront}}" class="fondo" alt="" />
                             <div class="fila datos-cred">
                                 <div class="cred-images">
-                                    <img src="http://localhost:4000/LOGO.png" class="escudo" alt="img"/>
+                                    <img src='{{user.logos.[0].institucion}}' class="escudo" alt=""/>
                                 </div>
                                 <div class="datos-inst" style="color:#461E68">
                                     {{!-- Datos de la universidad --}}
                                     {{!-- Preferentemente obtener de la base de datos --}}
                                     <p class="nombre-inst"><b>Universidad Politécnica de Pachuca</b></p>
-                                    <hr style="border-color:#70AD47"/>
-                                    <p class="lema">Una universidad para la Investigación</p>
+                                    <hr style="border-color:#434e3b; margin-top: 0px;"/>
+                                    <p class="lema" style="margin-top: 0px;">Una universidad para la Investigación</p>
                                 </div>
                             </div>
-                            <div class="fila datos-cred">
+                            <div class="fila datos-cred" style="margin-top: 0px;margin-left: 5px;">
                                 {{!-- Foto del alumno --}}
-                                <div class="cred-images">
+                                <div class="cred-images" style="margin-right: 10px;margin-top:10px;">
                                     <img src="data:image;base64,{{user.foto}}" class="foto-cred" alt=""/>
                                 </div>
-                                <div class="datos-inst">
+                                <div class="datos-inst" style="margin-top: 0px;">
                                     {{!-- Datos del alumno --}}
                                     <div class="nom-compl">
                                         <p class="mayus"><b>{{user.nombre}}</b></p>
@@ -274,7 +278,7 @@
                         <div class="columns">
                             {{!-- Carrera --}}
                             <div class="rotado180" style="background:#461E68; color: white">
-                                <p class=" mayus carrera" style="line-height: 30px;"><b>{{user.academico.[0].carrera}}</b></p>
+                                <p class=" mayus carrera" style="line-height: 15px;"><b>{{user.academico.[0].carrera}}</b></p>
                             </div>
                         </div>
                     </div>
@@ -282,13 +286,13 @@
                 <div class=" fila cred-lado lado-der">
                     
                     <div class="fondo ">
-                        <img src="http://localhost:4000/FONDO ATRAS.png" class="fondo" alt="" />
+                        <img src="{{user.contenido.[0].imagenBack}}" class="fondo" alt="" />
                         <div class="fila datos-cred justificado">
                             <div class="direccion-academica">
                                 <div class="firma-director">
                                     <div class="absoluto-centrado">
                                         <div class="relativo-centrado">
-                                            <img class="img-firma-director" src="http://localhost:4000/FIRMA.png" alt=""/>
+                                            <img class="img-firma-director" src="{{user.firmas.[0].firmaDirectivo}}" alt=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -299,17 +303,16 @@
                                     <p>Rector</p>
                                 </div>
                             </div>
-                            <div class="inst-superior">
-                                <img class="img-inst-superior" src="http://localhost:4000/SEP.png" alt=""/>
+                            <div class="inst-superior" style="padding-bottom: -30px;">
+                                <img class="img-inst-superior" src="{{user.logos.[0].sep}}" alt=""/>
                             </div>
                         </div>
-                        <div class="columns datos-cred">
+                        <div class="columns datos-cred" style="padding-top: 0px;">
                             <div class="fila datos-cred">
                                 <div class="cuadro-firma"/>
                             </div>
                         </div>
-                        
-                        <div class="fila datos-cred" style="padding: 10px 0px;">
+                        <div class="fila datos-cred" style="padding: 0px 0px; margin-left:15px">
                             <div class="letra-pequeña texto-centrado">
                                 <p>Este documento es intransferible, el titular es responsable de las acciones derivadas de su uso.</p>
                                 <p>Es indispensable su presentación para efectos de trámites académicos y administrativos</p>
@@ -318,7 +321,7 @@
                         
                         <div class="fila datos-cred justificado">
                             <div class="columns">
-                                <img class="periodoBack" src="http://localhost:4000/PERIODOB.png" alt=""/>
+                                <img class="periodoBack" src="{{user.contAd.[0].periodosEscolares}}" alt=""/>
                                 <p id="valorAnio" style="display: none">{{user.academico.[0].registro}}</p> 
                                 <script> 
                                     var anioR= document.getElementById('valorAnio');
@@ -467,14 +470,10 @@
                                 <div class="columns">
                                     <img class="periodo" src="{{user.qr}}" alt=""/>
                                 </div>
-                            </div>
-                            
-                            
+                            </div>  
                         </div>
                     </div>
-
                 </div>
-
             </div>
             <br/>
         </div>

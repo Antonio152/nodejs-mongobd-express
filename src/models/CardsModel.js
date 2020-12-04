@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const userSchema = new Schema({
     SchemaVersion: {
         type:String,
-        default:"1.0"
+        default:"2.0"
     },
     nombreCredencial:String,
     contenido: [{
@@ -16,7 +16,10 @@ const userSchema = new Schema({
     }],
     logos:[{
         institucion:String,
-        sep:String
+        sep:String,
+        gobierno:String,
+        estado:String,
+        universidad:String
     }],
     contAd:[{
         periodosEscolares:String

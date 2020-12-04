@@ -18,7 +18,7 @@
     /* Un lado de la credencial */
     .cred-lado {
         width: 455px;
-        height: 292px;
+        height: 200px;
         border: 2px solid #dbdbdb;
         border-radius: 10px;
         position: relative;
@@ -32,6 +32,7 @@
     /* fondo de la credencial */
     .fondo {
         width: 100%;
+        height: 100%;
         border-radius: 10px;
         position: absolute;
         z-index: 0;
@@ -39,12 +40,12 @@
 
     /* Escudo de la institución */
     .escudo {
-        width: 74px;
+        width: 55px;
     }
 
     .foto-cred {
-        width: 100px;
-        height: 130px;
+        width: 64px;
+        height: 86px;
         bottom: 20%;
         right: 6%;
     }
@@ -52,14 +53,13 @@
     /* datos del alumno */
     .datos-cred {
         position: relative;
-        padding: 10px;
+        /*padding: 5px;*/
     }
 
     /* escudo y foto */
     .cred-images {
-        width: 70px;
-        padding: 0 5px 5px 5px;
-        margin-right: 5px;
+        width: 54px;
+        height: 60px;
     }
 
     /* nombre de la institución */
@@ -68,7 +68,7 @@
         font-weight: 500;
         text-transform: uppercase;
         text-align: center;
-        padding: 5px 0px;
+        padding: 3px 0px;
     }
 
     /* Contenedor de datos */
@@ -81,6 +81,8 @@
     }
 
     .foto-usuario {
+        width: 54px;
+        height: 60px;
         padding: 0px 16px;
         margin: 0px auto;
         display: flex;
@@ -92,9 +94,11 @@
 
     /* Lema de la institución */
     .lema {
+        font-size: 12px;
         text-align: center;
-        padding: 5px 0px;
+        padding: 0px 0px;
         font-style: italic;
+        padding-bottom: 5px;
     }
 
     /* letras mayúsculas */
@@ -111,19 +115,20 @@
 
     /* Descripción del alumno */
     .desc {
-        font-size: 12px;
-        padding-right: 10px;
+        font-size: 10px;
+        padding-right: 7px;
         padding-bottom: 2px;
     }
 
     /* Nombre completo */
     .nom-compl {
-        padding-bottom: 5px;
+        font-size: 14px;
+        padding-top: 0px;
     }
 
     /* Dirección del alumno */
     .direc-alu {
-        margin-top: 5px;
+        margin-top: 3px;
     }
 
     .carrera {
@@ -132,6 +137,7 @@
         font-size: 13px;
         text-align: center;
         z-index: 10;
+        text-transform:uppercase;
     }
 
     /* Datos de la dirección de la institución */
@@ -166,6 +172,7 @@
     .img-firma-director {
         height: 40px;
         text-align: center;
+        width:55px ;
         /* left: 50%; */
         /* width: 100%; */
     }
@@ -178,17 +185,21 @@
     /* Contenedor de datos del director */
     .director {
         position: relative;
-        margin-top: 30px;
-        width: 150px;
+        width: 200px;
         text-align: center;
+        font-size: 8px;
+        margin-left: 33px;
+        margin-bottom: 100px;
+        margin-top: auto;
     }
 
     .nombre {
-        font-size: 10px;
+        font-size: 8px;
     }
 
     .letra-pequeña {
-        font-size: 7px;
+        font-size: 5px;
+        margin-left: 4px;
     }
 
     .texto-centrado {
@@ -204,27 +215,56 @@
     /* Donde firma el alumno */
     .cuadro-firma {
         background-color: rgb(240, 240, 240);
-        margin: 5px 30px;
+        margin: 7px 10px;
         width: 100%;
-        height: 50px;
+        height: 40px;
     }
 
     /* Periodo académico */
     .periodo {
-        width: 70px;
-        height: 57px;
+        height: 50px;
     }
 
+     /*ELEMENTOS NUEVOS DE PERIODO*/
+    .periodoBack{
+        height: 55px;
+        position: absolute;
+        z-index: 0;
+        margin-left: 15px;
+        margin-top: 8px;
+    }
+    .periodoCont{
+        width: 110px;
+        position: relative;
+        margin-top: 21px;
+        margin-left: 25px;
+        
+    }
+    .periodoCont p{
+        margin-top: -2px;
+        margin-left: 1px;
+        font-size: 14.5px;
+    }
+    .periodosNum{
+        position: absolute;
+        font-size: 9.5px;
+        margin-top: 8px;
+        margin-left: 15px;
+    }
     /* Línea vertical de la credencial */
     .linea-vertical {
         background: rgb(180, 180, 180);
         height: 100%;
         width: 2px;
-        margin: 0px 5px;
+        margin: 0px 1px;
     }
 
     .credencial {
         font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: 50px;
+    }
+
+    p{
     }
 </style>
 <html>
@@ -233,22 +273,21 @@
     {{!-- Para cada uno de los usuarios del req --}}
     {{#each usuarios as |user|}}
     <div class="columns">
-
         <div class="credencial">
             <div class="fila justificado">
-                <div class="fila cred-lado">
-                    <img src="http://localhost:4000/FONDO FRENTE.png" class="fondo" alt="" />
+                <div class="cred-lado">
+                    <img src="{{user.contenido.[0].imagenFront}}" class="fondo" alt="" />
                     <div class="columns">
-                        <div class="fila datos-cred">
+                        <div class="fila datos-cred" style="margin-bottom: 5px;">
                             <div class="cred-images">
-                                <img src="http://localhost:4000/LOGO.PNG" class="escudo" alt="" />
+                                <img src="{{user.logos.[0].institucion}}" class="escudo" alt="" />
                             </div>
                             <div class="datos-inst" style="color:#461E68">
                                 {{!-- Datos de la universidad --}}
                                 {{!-- Preferentemente obtener de la base de datos --}}
-                                <p class="nombre-inst"><b>Universidad Politécnica de Pachuca</b></p>
-                                <hr style="border-color:#461E68" />
-                                <p class="lema">Una universidad para la Investigación</p>
+                                <p class="nombre-inst"><b style="padding-bottom: 0px;">Universidad Politécnica de Pachuca</b></p>
+                                <hr style="border-color:#461E68; width:100%;"/>
+                                <p class="lema" style="padding-bottom: 0px;">Una universidad para la Investigación</p>
                             </div>
 
                         </div>
@@ -278,7 +317,7 @@
                         </div>
                         {{!-- Carrera --}}
                         <div class="carrera"
-                            style="background:#461E68; color: white; border-radius: 0 0 10px 10px; margin-right:3px">
+                            style="background:#461E68; color: white; border-radius: 0 0 10px 10px; margin-right:3px; margin-top: 1px;">
                             <p align="center"><b>{{user.academico.[0].carrera}}</b></p>
                         </div>
                     </div>
@@ -286,90 +325,202 @@
 
                 <div class=" fila cred-lado lado-der">
                     <div class="fondo ">
-                        <img src="http://localhost:4000/FONDO ATRAS.png" class="fondo" alt="" />
+                        <img src="{{user.contenido.[0].imagenBack}}" class="fondo" alt="" />
                         <div class="column datos-cred justificado">
                             <div class="fila direccion-academica">
-                                <div class="absoluto-centrado">
+                                <div class="absoluto-centrado" style="margin-top: 5px;">
                                     <div class="relativo-centrado">
-                                        <img style="height: 40px;width=70px;" src="http://localhost:4000/UTyP.png"
+                                        <img style="height: 40px;width=70px;margin-right=6px" src="{{user.logos.[0].universidad}}"
                                             alt="" />
-                                        <img style="height: 40px;width=40px;" src="http://localhost:4000/Gobierno.png"
+                                        <img style="height: 40px;width=40px;margin-right=6px" src="{{user.logos.[0].gobierno}}"
                                             alt="" />
-                                        <img style="height: 40px;width=40px;" src="http://localhost:4000/Hidalgo.png"
+                                        <img style="height: 40px;width=40px;margin-right=6px" src="{{user.logos.[0].estado}}"
                                             alt="" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="columns datos-cred">
+                        <div class="columns datos-cred" style="padding-top: 20px;">
                             <div class="fila datos-cred">
                                 <div class="cuadro-firma" />
                             </div>
                         </div>
-                        <div class="columns letra-pequeña" style="padding: 10px 0px;">
-                            <div  style="justify-content: center;align-items: center; margin:5px; text-align: center;">
-                                <p>Este documento es intransferible, el titular es responsable de las acciones
+                        <div class="columns letra-pequeña" style="padding: 2px 0px;">
+                            <div  style="justify-content: center;align-items: center;  text-align: center;">
+                                <p style="font-size: 8px;">Este documento es intransferible, el titular es responsable de las acciones
                                     derivadas de su uso.</p>
-                                <p>Es indispensable su presentación para efectos de trámites académicos y
+                                <p style="font-size: 8px;">Es indispensable su presentación para efectos de trámites académicos y
                                     administrativos</p>
                             </div>
                         </div>
-                        <div class="columns">
-                            <div class="linea-vertical" style="background: #461E68" />
+                      <div class="fila datos-cred justificado">
+                            <div class="columns">
+                                <img class="periodoBack" src="{{user.contAd.[0].periodosEscolares}}" alt=""/>
+                                <p id="valorAnio" style="display: none">{{user.academico.[0].registro}}</p> 
+                                <script> 
+                                    var anioR= document.getElementById('valorAnio');
+                                    var anio = anioR.innerHTML;
+                                    anio=anio.replace(/\D/g, ' ');//Removemos los digitos
+                                    var componentes = anio.split(' ');//pasamos los datos al arreglo
+                                    var fechaNum = parseInt(componentes[0]);
+                                    var a1=parseInt(fechaNum);
+                                    var a2=parseInt(fechaNum)+1;
+                                    var a3=parseInt(fechaNum)+2;
+                                    var a4=parseInt(fechaNum)+3;
+                                    var a5=parseInt(fechaNum)+4;
+                                    document.write("<p class='periodosNum'>"+a1+" "+a2 +" "+a3+" "+a4+" "+a5+"</p>") 
+                                </script>
+                                <p id="valorCuatri" style="display: none">{{user.academico.[0].cuatrimestre}}</p> 
+                                <p id="valorRegistro" style="display: none">{{user.academico.[0].registro}}</p>
+                                <div class="periodoCont">
+                                     <script>
+                                            var cuatrimestreR=document.getElementById('valorCuatri');
+                                            var cuatrimestreP = cuatrimestreR.innerHTML;
+                                            var cuatrimestre = parseInt(cuatrimestreP);
+                                            var ingresoR= document.getElementById('valorRegistro'); 
+                                            var ingreso = ingresoR.innerHTML;
+                                            ingreso=ingreso.replace(/\D/g, ' ');//Removemos los digitos 
+                                            var mesI = ingreso.split(' ');//pasamos los datos al arreglo 
+                                            var mes = parseInt(mesI[1]); 
+                                            var proceso=0;
+                                            
+                                                if(mes == 01 || mes == 1){
+                                                    proceso=1;
+                                                }else{
+                                                    proceso=3;
+                                                }
+                                        
+                                            //Proceso 1 
+                                            if(proceso==1 && cuatrimestre == 1){
+                                                    document.write("<p><b>x</b></p>");
+                                            }
+
+                                            if(proceso==1 && cuatrimestre == 2){
+                                                    //cout<<"x,x";
+                                                document.write("<p><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+
+                                            if(proceso==1 && cuatrimestre == 3){
+                                                    //cout<<"x,x,x";
+                                                document.write("<p><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+                                                
+                                            if(proceso==1 && cuatrimestre==4 ){
+                                                    //cout<<"x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+                                                        
+                                            if(proceso==1 && cuatrimestre==5){
+                                                    //cout<<"x,x,x,x,x";
+                                                    document.write("<p><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b></p>");
+                                            }
+                                                        
+                                            if(proceso==1 && cuatrimestre==6){
+                                                    //cout<<"x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>");
+                                            }
+                                            
+                                            if(proceso==1 && cuatrimestre==7){
+                                                    //cout<<"x,x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>");
+                                            }
+                                            
+                                            if(proceso==1 && cuatrimestre==8 ){
+                                                    //cout<<"x,x,x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b></p>");
+                                            }
+                                            if(proceso==1 && cuatrimestre==9){
+                                                    //cout<<"x,x,x,x,x,x,x,x,x";
+                                                document.write("<p><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b>x </b>.<b> x </b>.<b> x </b></p>");
+                                            }             
+                                                
+                                            
+                                            //Proceso3
+
+                                            if(proceso==3 && cuatrimestre == 1){
+                                                    //cout<<" , ,x";
+                                                document.write("<p><b>.</b></p>"+"<p class='periodoCont p'><b>.</b></p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                            }
+
+                                            if(proceso==3 && cuatrimestre == 2){
+                                                    //cout<<" , ,x,x";
+                                                document.write("<p>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.</p>"+"<p class='periodoCont p'><b>x</b></p>");
+                                                
+                                            }
+
+                                            if(proceso==3 && cuatrimestre == 3){
+                                                    //cout<<" , ,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b></p>");
+                                            }
+
+                                            
+                                            if(cuatrimestre==4 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b></p>");
+                                            }
+
+                                            
+                                            if(cuatrimestre==5 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b></p>");
+                                            }
+
+                                            if(cuatrimestre==6 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x,x";
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b></p>");
+                                            }
+                                            
+
+                                            if(cuatrimestre==7 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x,x,x";
+                                                    document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b>.<b> x </b></p>");
+                                            }
+
+
+                                            if(cuatrimestre==8 && proceso==3){
+                                                    //cout<<"-,-,x,x,x,x,x,x,x,x";
+                                                    document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b>.<b> x </b></p>");
+                                            }
+
+
+                                            if(cuatrimestre==9 && proceso==3){
+                                                document.write("<p><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b></b>.<b></b>.<b> </b>.<b> x </b>.<b> x </b>.<b> x </b></p>"+"<p class='periodoCont p'><b> x </b>.<b> x </b>.<b> x </b></p>");
+                                            }
+                                        
+                            </script>   
+                            </div>
+                            </div>
+                            </div>
+                        <div class="fila" style="align-items: right;">
+                            <div class="linea-vertical" style="background: #461E68; height: 90%; padding-left: 1px;" />
                         </div>
-                        <div class="fila datos-cred">
-                            <img style="width: 100px; height:auto;" src="http://localhost:4000/PERIODO.png" alt="" />
-                            {{!-- <div class="director">
-                                <div class="firma-director">
-                                    <div class="absoluto-centrado">
-                                        <div class="relativo-centrado">
-                                            <img style="width: 70px;" src="http://localhost:4000/FIRMA.png" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="nombre">Dr. Marco Antonio Flores Gonzáles</p>
-                                <p class="nombre">Rector</p>
-                            </div> --}}
-                            <div class="columns" style="justify-content: center;align-items: center; margin:5px; text-align: center;">
-                                <img style="width: 65px;" src="http://localhost:4000/FIRMA.png" alt="" />
-                                <p class="nombre">Dr. Marco Antonio Flores Gonzáles</p>
+                        <div class="fila datos-cred" style="margin-top:-35px;">
+                            <div class="columns" style="justify-content: center;align-items: center; margin:5px; text-align: center;margin-left:145px;margin-top:-10px;margin-right:0px;">
+                                <img style="width: 50px;" src="{{user.firmas.[0].firmaDirectivo}}" alt="" />
+                                <p class="nombre">Dr. Marco Antonio </p>
+                                <p class="nombre">Flores Gonzáles</p>
                                 <p class="nombre">Rector</p>
                             </div>
-                            <div class="columns">
+                            <div class="columns" style="align-items: right;">
                                 <div class="letra-pequeña" style="text-align: right;">
-                                    <div>
+                                    <div style="margin-top:-2px;margin-left:4px;">
                                         <b>Universidad Politécnica de Pachuca</b></br>Carr. Pachuca-Ciudad
                                         Sahagún
-                                        km 20.</br>Ex Hacienda de Sta.Bárbara, Zempoala, Hidalgo.</br>C.P. 43830
-                                        Tel
+                                        km 20.</br>Ex Hacienda de Sta.Bárbara,</b></b> Zempoala, Hidalgo.</br></b>C.P. 43830
+                                        </b></b>Tel
                                         01(771)547 7510 ext. 2213
                                     </div>
                                 </div>
-                            </div>
-                            <img style="width: 57px; height: 57px;" src="http://localhost:4000/QR.png" alt="" />
+                            </div style="align-items: right;">
+                            <img style="width: 35px; height: 35px;margin-left:3px;margin-top:-7px;" src="{{user.qr}}" alt="" />
                         </div>
-                        {{!-- <div class="fila">
-                            <div class="columns">
-                                <div class="letra-pequeña">
-                                    <div>
-                                        <b>Universidad Politécnica de Pachuca</b></br>Carr. Pachuca-Ciudad
-                                        Sahagún
-                                        km 20.</br>Ex Hacienda de Sta.Bárbara, Zempoala, Hidalgo.</br>C.P. 43830
-                                        Tel
-                                        01(771)547 7510 ext. 2213
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="columns">
-                                <img style="height: 57px;" src="http://localhost:4000/QR.png" alt="" />
-                            </div>
-                        </div> --}}
+                       </div>
                     </div>
                     <br />
                 </div>
             </div>
-            <br /><br />
-            {{/each}}
+        </div>
+    </div>
+    {{/each}}
 </body>
-
 </html>
