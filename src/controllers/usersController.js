@@ -55,6 +55,18 @@ userCtrl.createUser = async (req, res) => {
         const dtqr= req.body.nombre+' '+req.body.aPaterno+' '+req.body.aMaterno+' - '+req.body.academico[0].matricula+' - '+statusA;
         const QR= await qrcode.toDataURL(dtqr)
         req.body.qr = QR;   
+
+    // Verificación de email y usuario único 
+    const email  = req.body.contacto[0].email;
+    const user = await User.findOne( {$or: [{'contacto.0.email': email}, {'username': req.body.username}]});
+    if (user) {
+        res.json({
+            existente: true,
+            message: 'Ya existe un usuario registrado con ese email o nombre de usuario.'
+        });
+        return;
+    }
+
     // Creamos la base de datos y comprobamos el estado.
     const usuario = new User({
         username: req.body.username,
@@ -95,13 +107,14 @@ userCtrl.update = async (req, res) => {
     }
   
     const id = req.params.id;
+  
     await User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
             res.status(404).json({
                 message: `No se puede actualizar el dato con el id=${id}. Probablemente el dato no fue encontrado!`
             });
-            } else res.json({ message: "Datos actualizados satisfactoriamente.", data: data });
+            } else res.json({ message: "Datos actualizados satisfactoriamente." });
         })
         .catch(err => {
             res.status(500).json({

@@ -14,7 +14,7 @@
     }
     /* Un lado de la credencial */
     .cred-lado{
-        width: 455px;
+        width: 370px;
         height: 200px;
         border: 2px solid #dbdbdb;
         border-radius: 10px;
@@ -478,7 +478,12 @@
             <br/>
         </div>
         </div>
-        <br/><br/>
+        
+        {{#ifIsNthItem nth=3}}
+            <div style="margin-top: 150px;"/>
+        {{else}}
+            <br/><br/>
+        {{/ifIsNthItem}}
         {{/each}}
     </body>
 </html>
