@@ -39,8 +39,10 @@ const makeLogin = (req,res,searchedUser) => {
         datosAcademicos: [{
             carrera: searchedUser.academico[0].carrera,
             cuatrimestre: searchedUser.academico[0].cuatrimestre,
-            estatus: searchedUser[0].academico[0].estatus,
-            matricula: searchedUser[0].academico[0].matricula
+            estatus: searchedUser.academico[0].estatus,
+            matricula: searchedUser.academico[0].matricula
+            // ...(searchedUser.rol[0].nombre !== 'Alumno' && searchedUser.rol[0].nombre !== 'Profesor' &&{estatus: searchedUser[0].academico[0].estatus !== undefined ? searchedUser[0].academico[0].estatus : true}),
+            // ...(searchedUser.rol[0].nombre !== 'Alumno' && searchedUser.rol[0].nombre !== 'Profesor' &&{ matricula: searchedUser[0].academico[0].matricula !== undefined ? searchedUser[0].academico[0].matricula : ''})
         }],
         contacto: [{
             telefono: searchedUser.contacto[0].telefono,
@@ -229,6 +231,8 @@ SessionCtrl.isLoggedIn = async (req, res) => {
                     cuatrimestre: searchedUser[0].academico[0].cuatrimestre,
                     estatus: searchedUser[0].academico[0].estatus,
                     matricula: searchedUser[0].academico[0].matricula
+                    // ...(searchedUser.rol[0].nombre !== 'Alumno' && searchedUser.rol[0].nombre !== 'Profesor' &&{estatus: searchedUser[0].academico[0].estatus !== undefined ? searchedUser[0].academico[0].estatus : true}),
+                    // ...(searchedUser.rol[0].nombre !== 'Alumno' && searchedUser.rol[0].nombre !== 'Profesor' &&{ matricula: searchedUser[0].academico[0].matricula !== undefined ? searchedUser[0].academico[0].matricula : ''})
 
                 }],
                 contacto: [{
