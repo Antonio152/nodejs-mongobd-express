@@ -158,7 +158,7 @@
     }
 
     .letra-pequeña {
-        font-size: 8px;
+        font-size: 6px;
     }
     .texto-centrado{
         text-align: center;
@@ -312,7 +312,7 @@
                                 <div class="cuadro-firma"/>
                             </div>
                         </div>
-                        <div class="fila datos-cred" style="padding: 0px 0px; margin-left:15px">
+                        <div class="fila datos-cred" style="padding: 0px 0px; margin-left:15px;text-align:center;">
                             <div class="letra-pequeña texto-centrado">
                                 <p>Este documento es intransferible, el titular es responsable de las acciones derivadas de su uso.</p>
                                 <p>Es indispensable su presentación para efectos de trámites académicos y administrativos</p>
@@ -322,7 +322,7 @@
                         <div class="fila datos-cred justificado">
                             <div class="columns">
                                 <img class="periodoBack" src="{{user.contAd.[0].periodosEscolares}}" alt=""/>
-                                <p id="valorAnio" style="display: none">{{user.academico.[0].registro}}</p> 
+                                <p id="valorAnio" style="display: none; font-size: 6px;">{{user.academico.[0].registro}}</p> 
                                 <script> 
                                     var anioR= document.getElementById('valorAnio');
                                     var anio = anioR.innerHTML;
