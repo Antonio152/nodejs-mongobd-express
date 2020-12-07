@@ -38,7 +38,9 @@ const makeLogin = (req,res,searchedUser) => {
         modulos: searchedUser.rol[0].modulos,
         datosAcademicos: [{
             carrera: searchedUser.academico[0].carrera,
-            cuatrimestre: searchedUser.academico[0].cuatrimestre
+            cuatrimestre: searchedUser.academico[0].cuatrimestre,
+            estatus: searchedUser[0].academico[0].estatus,
+            matricula: searchedUser[0].academico[0].matricula
         }],
         contacto: [{
             telefono: searchedUser.contacto[0].telefono,
@@ -224,7 +226,10 @@ SessionCtrl.isLoggedIn = async (req, res) => {
                 modulos: searchedUser[0].rol[0].modulos,
                 datosAcademicos: [{
                     carrera: searchedUser[0].academico[0].carrera,
-                    cuatrimestre: searchedUser[0].academico[0].cuatrimestre
+                    cuatrimestre: searchedUser[0].academico[0].cuatrimestre,
+                    estatus: searchedUser[0].academico[0].estatus,
+                    matricula: searchedUser[0].academico[0].matricula
+
                 }],
                 contacto: [{
                     telefono: searchedUser[0].contacto[0].telefono,
